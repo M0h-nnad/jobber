@@ -1,0 +1,58 @@
+{
+  "name": "jobber-auth",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/jobber-auth/src",
+  "projectType": "application",
+  "tags": [],
+  "targets": {
+    "build": {
+      "executor": "nx:run-commands",
+      "dependsOn": ["generate-types"],
+      "options": {
+        "command": "webpack-cli build",
+        "args": ["node-env=production"]
+      },
+      "configurations": {
+        "development": {
+          "args": ["node-env=development"]
+        }
+      }
+    },
+    "serve": {
+      "continuous": true,
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "dependsOn": ["build"],
+      "options": {
+        "buildTarget": "jobber-auth:build",
+        "runBuildTargetDependencies": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "jobber-auth:build:development"
+        },
+        "production": {
+          "buildTarget": "jobber-auth:build:production"
+        }
+      }
+    },
+    "test": {
+      "options": {
+        "passWithNoTests": true
+      },
+      "dependsOn":["generate-types"]
+    },
+    "generate-types":{
+      "command": "prisma generate",
+      "options": {
+        "cwd":"apps/jobber-auth"
+      }
+    },
+    "migrate-prisma":{
+      "command": "prisma migrate dev",
+      "options": {
+        "cwd":"apps/jobber-auth"
+      }
+    }
+  }
+}
