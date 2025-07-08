@@ -1,3 +1,4 @@
+import { PulsarClient } from '@jobber/pulsar';
 import { Job } from '../decorator/job.decorator';
 import { AbstractJob } from './abstract-job';
 
@@ -5,4 +6,8 @@ import { AbstractJob } from './abstract-job';
   name: 'Fibonacci',
   description: 'Generate a Fibonacci sequance and store it in the DB.',
 })
-export class FibonacciJobs extends AbstractJob {}
+export class FibonacciJobs extends AbstractJob {
+  constructor(client: PulsarClient) {
+    super(client);
+  }
+}

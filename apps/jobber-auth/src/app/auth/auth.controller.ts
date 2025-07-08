@@ -14,7 +14,6 @@ export class AuthController implements AuthServiceController {
 
   @UseGuards(JwtAuthGuard)
   async authenticate(request: AuthenticateRequest): Promise<User> {
-    this.logger.log(request);
     return { id: 1, email: 'dsfasdf' } as User;
   }
 }

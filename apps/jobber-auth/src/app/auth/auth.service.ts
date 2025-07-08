@@ -35,11 +35,6 @@ export class AuthService {
       expires,
     });
 
-    console.log(
-      'secure',
-      this.configService.get<string>('NODE_ENV') === 'production'
-    );
-
     return user;
   }
 
