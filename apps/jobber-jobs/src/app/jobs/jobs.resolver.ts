@@ -18,6 +18,9 @@ export class JobsResolver {
   @Mutation(() => Job)
   @UseGuards(GqlAuthGuard)
   executeJob(@Args('executeJobInput') executeJobInput: ExecuteJobInput) {
-    return this.jobService.executeJob(executeJobInput.name);
+    return this.jobService.executeJob(
+      executeJobInput.name,
+      executeJobInput.data
+    );
   }
 }

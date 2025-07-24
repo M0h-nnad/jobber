@@ -6,7 +6,8 @@ import { AbstractJob } from './abstract-job';
   name: 'Fibonacci',
   description: 'Generate a Fibonacci sequance and store it in the DB.',
 })
-export class FibonacciJobs extends AbstractJob {
+export class FibonacciJobs extends AbstractJob<any> {
+  protected messageClass: new () => any = fin;
   constructor(client: PulsarClient) {
     super(client);
   }

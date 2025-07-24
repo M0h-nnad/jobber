@@ -23,11 +23,11 @@ export class JobService implements OnModuleInit {
     return this.jobs.map((job) => job.meta);
   }
 
-  async executeJob(name: string) {
+  async executeJob(name: string, data: object) {
     const job = this.jobs.find((job) => job.meta.name === name);
     if (!job) throw new BadRequestException(`Job ${name} not found`);
     await (job.discoveredClass.instance as AbstractJob).execute(
-      {},
+      data,
       job.meta.name
     );
     return job.meta;
