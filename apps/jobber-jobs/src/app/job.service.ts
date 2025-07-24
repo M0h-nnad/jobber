@@ -3,9 +3,9 @@ import {
   DiscoveredClassWithMeta,
   DiscoveryService,
 } from '@golevelup/nestjs-discovery';
-import { JOB_METADATA_KEY } from '../decorator/job.decorator';
-import { AbstractJob } from './abstract-job';
-import { JobMetadata } from '../interfaces/job-metadata.interface';
+import { JOB_METADATA_KEY } from './decorator/job.decorator';
+import { AbstractJob } from './jobs/abstract-job';
+import { JobMetadata } from './interfaces/job-metadata.interface';
 
 @Injectable()
 export class JobService implements OnModuleInit {
@@ -26,7 +26,7 @@ export class JobService implements OnModuleInit {
   async executeJob(name: string, data: object) {
     const job = this.jobs.find((job) => job.meta.name === name);
     if (!job) throw new BadRequestException(`Job ${name} not found`);
-    await (job.discoveredClass.instance as AbstractJob).execute(
+    await (job.discoveredClass.instance as AbstractJob<any>).execute(
       data,
       job.meta.name
     );

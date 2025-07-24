@@ -1,7 +1,7 @@
 {
-  "name": "jobber-jobs",
+  "name": "jobs",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "jobber-jobs/src",
+  "sourceRoot": "jobs/src",
   "projectType": "application",
   "tags": [],
   "targets": {
@@ -23,15 +23,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "jobber-jobs:build",
+        "buildTarget": "jobs:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "jobber-jobs:build:development"
+          "buildTarget": "jobs:build:development"
         },
         "production": {
-          "buildTarget": "jobber-jobs:build:production"
+          "buildTarget": "jobs:build:production"
         }
       }
     }

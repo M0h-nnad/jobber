@@ -1,7 +1,7 @@
 {
-  "name": "jobber-executer",
+  "name": "executer",
   "$schema": "../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/jobber-executer/src",
+  "sourceRoot": "apps/executer/src",
   "projectType": "application",
   "targets": {
     "build": {
@@ -22,15 +22,15 @@
       "defaultConfiguration": "development",
       "dependsOn": ["build"],
       "options": {
-        "buildTarget": "jobber-executer:build",
+        "buildTarget": "executer:build",
         "runBuildTargetDependencies": false
       },
       "configurations": {
         "development": {
-          "buildTarget": "jobber-executer:build:development"
+          "buildTarget": "executer:build:development"
         },
         "production": {
-          "buildTarget": "jobber-executer:build:production"
+          "buildTarget": "executer:build:production"
         }
       }
     }

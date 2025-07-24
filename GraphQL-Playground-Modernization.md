@@ -129,7 +129,7 @@ app.enableCors({
 1. **Start your server**:
 
    ```bash
-   nx serve jobber-auth
+   nx serve auth
    ```
 
 2. **Open the GraphQL endpoint**:

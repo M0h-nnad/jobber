@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { FibonacciJobs } from './fibonacci.jobs';
+import { FibonacciJobs } from './jobs/fibonacci/fibonacci.jobs';
 import { DiscoveryModule } from '@golevelup/nestjs-discovery';
 import { JobService } from './job.service';
 import { JobsResolver } from './jobs.resolver';
